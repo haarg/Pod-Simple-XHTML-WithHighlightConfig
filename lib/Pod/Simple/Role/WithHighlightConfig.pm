@@ -7,8 +7,8 @@ after BUILD => sub {
   $_[0]->accept_targets('highlighter');
 };
 
-has highlight_config => (is => 'rwp');
-has _highlight_scratch => (is => 'rw', clearer => 1);
+has highlight_config => (is => 'rwp', init_arg => undef);
+has _highlight_scratch => (is => 'rw', clearer => 1, init_arg => undef);
 
 around _handle_element_start => sub {
   my $orig = shift;
@@ -23,7 +23,6 @@ around _handle_element_start => sub {
     $self->$orig(@_);
   }
 };
-
 
 around _handle_text => sub {
   my $orig = shift;
