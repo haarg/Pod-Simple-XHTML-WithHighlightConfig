@@ -12,6 +12,7 @@ nytprof*
 /inc/
 README
 /MANIFEST.SKIP
+/pod2htmd.tmp
 /Distar
 /Pod-Simple-XHTML-WithHighlightConfig-*.tar.gz
 /Pod-Simple-XHTML-WithHighlightConfig-*/
