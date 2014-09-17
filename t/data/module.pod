@@ -1,0 +1,25 @@
+=pod
+
+=head1 First Heading
+
+=for html <b>text</b>
+
+A paragraph.
+
+=for highlighter language=Perl
+
+  my $var = foo();
+
+Another paragraph.
+
+=for highlighter
+
+  Just a verbatim section.
+
+=for highlighter language=javascript line_numbers=1 start_line=5 highlight=1,4-10,20
+
+Pargraph 3.
+
+  Another verbatim section.
+
+=cut
