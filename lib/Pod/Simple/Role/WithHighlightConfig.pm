@@ -44,9 +44,10 @@ around _handle_element_end => sub {
   if ($element eq 'for' and my $scratch = $self->_highlight_scratch) {
     $self->_clear_highlight_scratch;
     my $text = $scratch->{config_text};
-    my @config = split /(\S+)\s*=\s*/, $text;
+    my @config = split /(\S+)\s*=/, $text;
     shift @config;
-    $self->highlight_config({ @config });
+    s/^\s+//, s/\s+$// for @config;
+    $self->_set_highlight_config({ @config });
   }
   else {
     $self->$orig(@_);
