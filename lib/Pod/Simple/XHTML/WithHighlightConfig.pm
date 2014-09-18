@@ -7,39 +7,34 @@ $VERSION = eval $VERSION;
 extends 'Pod::Simple::XHTML';
 with 'Pod::Simple::Role::WithHighlightConfig';
 
-sub start_code {
-  my $self = shift;
-  my ($opt) = @_;
-  my @code_classes;
-  if ($opt && $opt eq 'Verbatim') {
-    my $config = $self->highlight_config || {};
-    my $tag = '<pre';
-    my @classes;
-    if ($config->{line_numbers}) {
-      push @classes, 'line-numbers';
-      if ($config->{start_line}) {
-        $tag .= ' data-start="' . $self->encode_entities($config->{start_line}) . '"';
-      }
+around start_highlight => sub {
+  my ($orig, $self, $item, $config) = @_;
+  $self->$orig($item, $config);
+  $config ||= {};
+  my $tag = '<pre';
+  my @classes;
+  if ($config->{line_numbers}) {
+    push @classes, 'line-numbers';
+    if ($config->{start_line}) {
+      $tag .= ' data-start="' . $self->encode_entities($config->{start_line}) . '"';
     }
-    if ($config->{highlight}) {
-      $tag .= ' data-line="' . $self->encode_entities($config->{highlight}) . '"';
-    }
-    if (@classes) {
-      $tag .= ' class="' . join (' ', @classes) . '"';
-    }
-    $tag .= '><code';
-    if ($config->{language}) {
-      my $lang = lc $config->{language};
-      $lang =~ s/\+/p/g;
-      $lang =~ s/\W//g;
-      $tag .= ' class="language-' . $lang . '"';
-    }
-    $tag .= '>';
-    $self->{scratch} = $tag;
-    return;
   }
-  $self->SUPER::start_code(@_);
-}
+  if ($config->{highlight}) {
+    $tag .= ' data-line="' . $self->encode_entities($config->{highlight}) . '"';
+  }
+  if (@classes) {
+    $tag .= ' class="' . join (' ', @classes) . '"';
+  }
+  $tag .= '><code';
+  if ($config->{language}) {
+    my $lang = lc $config->{language};
+    $lang =~ s/\+/p/g;
+    $lang =~ s/\W//g;
+    $tag .= ' class="language-' . $lang . '"';
+  }
+  $tag .= '>';
+  $self->{scratch} = $tag;
+};
 
 1;
 __END__
