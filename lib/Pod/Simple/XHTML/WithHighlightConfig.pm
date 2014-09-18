@@ -67,7 +67,9 @@ configuration directive.
 
 =head1 CONFIGURATION
 
-The supported configuration attributes are as follows:
+The configuration must be specified as a whitespace separated list of settings.
+Settings must be in the form C<< <key>=<value> >>.  A bare option without an
+C<=> will be used the language setting.
 
 =over 4
 
