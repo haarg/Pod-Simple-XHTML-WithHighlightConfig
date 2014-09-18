@@ -14,12 +14,24 @@ Another paragraph.
 
 =for highlighter
 
-  Just a verbatim section.
+  Just a verbatim section
 
 =for highlighter language=javascript line_numbers=1 start_line=5 highlight=1,4-10,20
 
 Pargraph 3.
 
-  Another verbatim section.
+  Another verbatim section
+
+=for highlighter javascript
+
+  Another verbatim section 2
+
+=for highlighter line_numbers
+
+  Another verbatim section 3
+
+=for highlighter welp=5
+
+  Another verbatim section 4
 
 =cut
