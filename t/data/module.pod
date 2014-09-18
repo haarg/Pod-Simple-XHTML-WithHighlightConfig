@@ -24,14 +24,14 @@ Pargraph 3.
 
 =for highlighter javascript
 
-  Another verbatim section 2
+  Verbatim section with bare language
 
 =for highlighter line_numbers
 
-  Another verbatim section 3
+  Bad line_numbers setting
 
 =for highlighter welp=5
 
-  Another verbatim section 4
+  Invalid setting welp
 
 =cut

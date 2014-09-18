@@ -23,7 +23,7 @@ like $html,
   qr{<pre data-start="5" data-line="1,4-10,20" class="line-numbers"><code class="language-javascript">  Another verbatim section</code></pre>},
   'start line, line numbers, highlight lines set properly';
 like $html,
-  qr{<pre><code class="language-javascript">  Another verbatim section 2</code></pre>},
+  qr{<pre><code class="language-javascript">  Verbatim section with bare language</code></pre>},
   'bare language';
 
 like $html,
