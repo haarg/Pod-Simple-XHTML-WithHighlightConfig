@@ -55,6 +55,16 @@ Pod::Simple::XHTML::WithHighlightConfig - Allow configuring syntax highlighting 
 
     my @array = map { $_ + 1 } (5..10);
 
+  =for highlighter
+
+    No language set
+
+  =for highlighter perl
+
+    use Class;
+    my $var = Class->new;
+
+
 =head1 DESCRIPTION
 
 This module allows adding syntax highlighter hints to a Pod document to be
@@ -67,9 +77,10 @@ configuration directive.
 
 =head1 CONFIGURATION
 
-The configuration must be specified as a whitespace separated list of settings.
-Settings must be in the form C<< <key>=<value> >>.  A bare option without an
-C<=> will be used the language setting.
+The configuration must be specified in a C<=for highlighter> block, as a
+whitespace separated list of settings.  Each setting must be in the form
+C<< <key>=<value> >>.  Alternately, a bare option without an C<=> can be used
+to specify the language setting.
 
 =over 4
 
