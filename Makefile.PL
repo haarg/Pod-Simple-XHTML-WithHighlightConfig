@@ -10,7 +10,6 @@ my %META = (
     build => { requires => { } },
     test => { requires => {
       'Test::More' => 0,
-      'Test::Fatal' => 0,
     } },
     runtime => {
       requires => {
