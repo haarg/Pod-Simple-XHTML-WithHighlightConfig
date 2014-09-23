@@ -4,8 +4,23 @@ use Moo;
 our $VERSION = '0.000001';
 $VERSION = eval $VERSION;
 
+use Pod::Simple::XHTML ();
+BEGIN {
+  *_ENCODE_AS_METHOD = $Pod::Simple::VERSION >= 3.16 ? sub(){1} : sub(){0};
+}
+
 extends 'Pod::Simple::XHTML';
 with 'Pod::Simple::Role::WithHighlightConfig';
+
+sub _encode_entities {
+  my ($self, $text) = @_;
+  if (_ENCODE_AS_METHOD) {
+    $self->encode_entities($text);
+  }
+  else {
+    Pod::Simple::XHTML::encode_entities($text);
+  }
+}
 
 around start_highlight => sub {
   my ($orig, $self, $item, $config) = @_;
@@ -16,11 +31,11 @@ around start_highlight => sub {
   if ($config->{line_numbers}) {
     push @classes, 'line-numbers';
     if ($config->{start_line}) {
-      $tag .= ' data-start="' . $self->encode_entities($config->{start_line}) . '"';
+      $tag .= ' data-start="' . $self->_encode_entities($config->{start_line}) . '"';
     }
   }
   if ($config->{highlight}) {
-    $tag .= ' data-line="' . $self->encode_entities($config->{highlight}) . '"';
+    $tag .= ' data-line="' . $self->_encode_entities($config->{highlight}) . '"';
   }
   if (@classes) {
     $tag .= ' class="' . join (' ', @classes) . '"';

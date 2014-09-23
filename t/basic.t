@@ -26,12 +26,20 @@ like $html,
   qr{<pre><code class="language-javascript">  Verbatim section with bare language</code></pre>},
   'bare language';
 
-like $html,
-  qr{<dt>Around line 29:</dt>\s*<dd>\s*<p>Invalid empty line_numbers setting\.</p>},
-  'errors for invalid line_numbers';
+{
+  my $match = qr{(?:<dt>Around line (\d+):</dt>\s*<dd>\s*)?<p>Invalid empty line_numbers setting\.</p>};
+  like $html, $match, 'errors for invalid line_numbers'
+    and $html =~ $match
+    and defined $1
+    and is "$1", 29, 'error has correct line number';
+}
 
-like $html,
-  qr{<dt>Around line 33:</dt>\s*<dd>\s*<p>Invalid setting &quot;welp&quot;\.</p>},
-  'errors for invalid settings';
+{
+  my $match = qr{(?:<dt>Around line (\d+):</dt>\s*<dd>\s*)?<p>Invalid setting (?:&quot;|")welp(?:&quot;|")\.</p>};
+  like $html, $match, 'errors for invalid settings'
+    and $html =~ $match
+    and defined $1
+    and is "$1", 33, 'error has correct line number';
+}
 
 done_testing;
