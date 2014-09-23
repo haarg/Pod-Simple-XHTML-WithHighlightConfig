@@ -115,9 +115,9 @@ on the C<< <pre> >> block.
 =item * L<TOBYINK::Pod::HTML> - Another module using the same configuration
 format
 
-=item * L<http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element|HTML5 code element> - Semantics for highlighting encouraged by the HTML4 spec
+=item * L<HTML5 code element|http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element> - Semantics for highlighting encouraged by the HTML5 spec
 
-=item * L<http://prismjs.com/|Prism> - A javascript syntax highlighter
+=item * L<Prism|http://prismjs.com/> - A javascript syntax highlighter
 supporting the classes and attributes used by this module
 
 =back
