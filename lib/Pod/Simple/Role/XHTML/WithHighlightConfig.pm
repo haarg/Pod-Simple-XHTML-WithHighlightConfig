@@ -1,7 +1,7 @@
 package Pod::Simple::Role::XHTML::WithHighlightConfig;
 use Moo::Role;
 
-our $VERSION = '0.000001';
+our $VERSION = '0.000002';
 $VERSION =~ tr/_//d;
 
 use Pod::Simple::XHTML ();
