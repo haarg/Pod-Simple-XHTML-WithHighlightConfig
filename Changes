@@ -1,5 +1,6 @@
 Revision history for Pod-Simple-XHTML-WithHighlightConfig
 
+0.000002 - 2017-10-08
   - moved implementation into a reusable role
 
 0.000001 - 2014-09-23
