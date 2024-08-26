@@ -1,7 +1,7 @@
 package Pod::Simple::XHTML::WithHighlightConfig;
 use Moo;
 
-our $VERSION = '0.000002';
+our $VERSION = '0.000003';
 $VERSION =~ tr/_//d;
 
 extends 'Pod::Simple::XHTML';
